@@ -1,4 +1,5 @@
 # CI de Nível 03 - Disparo automático sempre que o outro for concluído, como deploy
+
 name: 'Execução por Deploy'
 
 # triggers de disparo da execução (triggers)
