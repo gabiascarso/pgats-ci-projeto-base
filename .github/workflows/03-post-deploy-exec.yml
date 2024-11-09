@@ -1,4 +1,4 @@
-# CI de Nível 03 - Disparo automático sempre que o outro for concluído, como deploy
+# CI de Nível 03 - Disparo automático sempre que outro deploy for concluído
 
 name: 'Execução por Deploy'
 
