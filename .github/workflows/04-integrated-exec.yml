@@ -1,0 +1,70 @@
+# CI de Nível 04 - Disparo dentro do fluxo de CI de desenvolvimento
+
+# nome que vai apareer la na opçoes de pipe
+name: 'Execução Integrada'
+
+# triggers de disparo da execução (triggers)
+  # gatilho de exec manual = workflow_dispatch
+
+
+on:
+  workflow_dispatch:
+
+# inspecao
+#   padronização ( lint - formatação de código )
+# testes 💜
+#   unidade 
+#   e2e 💜
+#     build 
+# deploy
+
+jobs:
+
+  inspection: 
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalando Yarn
+        run: npm install -g yarn
+
+      - name: Instalando dependências
+        run: yarn
+
+      - name: Padronização de código (Lint)
+        rum: yarn lint
+
+  
+  # descrição do job
+  e2e-tests:
+
+    # maquina que o job vai executar
+    runs-on: ['ubuntu-latest'] 
+
+    # passo a passo das ações do job
+    steps:
+      
+      - uses: actions/checkout@v4
+
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     node-version: lts/*
+
+      - name: Instalando Yarn
+        run: npm install -g yarn
+
+      - name: Instalando dependências
+        run: yarn
+
+      - name: Instalando Playwright
+        run: yarn playwright install
+
+      - name: Testes E2E (end-to-end)
+        run: yarn run e2e
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-de-testes
+          path: ./playwright-report
+
