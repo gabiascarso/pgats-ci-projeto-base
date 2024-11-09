@@ -3,8 +3,7 @@
 name: 'Execução por Deploy'
 
 # triggers de disparo da execução (triggers)
-  # gatilho de exec após outro workflow = workflow_run
-
+# gatilho de exec após outro workflow = workflow_run
 
 on:
   workflow_run:
@@ -12,20 +11,16 @@ on:
     types:
       - completed
 
-
 jobs:
-
   # descrição do job
   e2e-tests:
-
     # maquina que o job vai executar
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
 
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    
+
     # passo a passo das ações do job
     steps:
-      
       - uses: actions/checkout@v4
 
       # - uses: actions/setup-node@v4
@@ -48,4 +43,3 @@ jobs:
         with:
           name: relatorio-de-testes
           path: ./playwright-report
-

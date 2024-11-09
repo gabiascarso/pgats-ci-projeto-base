@@ -3,7 +3,7 @@
 name: 'Execução Agendada'
 
 # triggers de disparo da execução (triggers)
-  # gatilho de exec agendada = schedule
+# gatilho de exec agendada = schedule
 
 # cron POSIX
 
@@ -22,18 +22,14 @@ on:
   schedule:
     - cron: '0 4 * 11 6'
 
-
 jobs:
-
   # descrição do job
   e2e-tests:
-
     # maquina que o job vai executar
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
 
     # passo a passo das ações do job
     steps:
-      
       - uses: actions/checkout@v4
 
       # - uses: actions/setup-node@v4
@@ -56,4 +52,3 @@ jobs:
         with:
           name: relatorio-de-testes
           path: ./playwright-report
-

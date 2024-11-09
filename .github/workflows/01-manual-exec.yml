@@ -4,12 +4,11 @@
 name: 'Execução Manual'
 
 # triggers de disparo da execução (triggers)
-  # gatilho de exec manual = workflow_dispatch
-
+# gatilho de exec manual = workflow_dispatch
 
 on:
   workflow_dispatch:
-  
+
 # jobs:
 #     build:
 #         steps:
@@ -22,18 +21,14 @@ on:
 #     - instalar as dependencias
 #     - executar o comando para rodar os testes
 
-
 jobs:
-
   # descrição do job
   e2e-tests:
-
     # maquina que o job vai executar
-    runs-on: ['ubuntu-latest'] 
+    runs-on: ['ubuntu-latest']
 
     # passo a passo das ações do job
     steps:
-      
       - uses: actions/checkout@v4
 
       # - uses: actions/setup-node@v4
@@ -56,4 +51,3 @@ jobs:
         with:
           name: relatorio-de-testes
           path: ./playwright-report
-
